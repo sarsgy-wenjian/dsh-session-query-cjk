@@ -2,6 +2,18 @@
 
 本包版本号跟随 `package.json`。破坏性变更会单独标注。
 
+## 0.3.3 — 2026-11-15
+
+**修复：`engines` 声明写错（会"装得上、跑不了"）**
+
+- `engines.node` 由 `>=20` 改为 **`>=22.13.0`**。本插件用 `node:sqlite`：它在 v22.5 出现但需要 `--experimental-sqlite`，**v22.13 / v23.4 起才免 flag**。原来的 `>=20` 会让 Node 20 用户安装成功、启动即失败。
+- 代码零改动：`lib/index.js` 与 0.3.2 逐字节相同（SHA256 仍为 `e814bf6c…fab9915`），因此对 0.3.2 做过的安装/启动验证对本版继续有效。
+
+**文档**
+
+- README 与 `docs/DETAIL.md` 补 Node 版本前置：**插件侧 ≥22.13**（推荐 24.x）；若用 npm 装 DSH 命令行，`@deepseek-ai/dsh` 自身要求 **Node ≥24.9**。
+- 补一条来自 Ubuntu 22.04 实机复验的提醒：不少云主机默认 Node 是 22.x 基线版本，装之前先 `node -v`。
+
 ## 0.3.2 — 2026-11-15
 
 **新增：可作为 DeepSeek Harness bundle 一键安装**

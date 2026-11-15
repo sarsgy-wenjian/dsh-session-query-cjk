@@ -38,6 +38,16 @@
 
 ## 安装
 
+### 环境要求
+
+| 项 | 要求 | 说明 |
+|---|---|---|
+| Node（插件侧） | **≥ 22.13** | 插件用内置 `node:sqlite`：v22.5 出现但需 `--experimental-sqlite`，v22.13／v23.4 起免 flag。推荐 24.x |
+| Node（用 npm 装 DSH 命令行时） | **≥ 24.9** | `@deepseek-ai/dsh` 自己的 `engines` 要求，低于此装不上 |
+| DeepSeek Harness | 0.2.2-rc.3 | `peerDependencies` 钉的就是这个版本 |
+
+> 踩过的坑：Ubuntu 22.04 云主机默认 PATH 里的 Node 常是 22.x 基线版本，可能低于上面要求。装之前先 `node -v`；机器上常另装有 `/opt/nodejs/24` 之类的路径，把它前置到 PATH 即可。
+
 ### 方式 A：一键安装（推荐）
 
 本包声明了 `dsh.bundle`，装为 bundle 即可，**补丁会自动禁掉官方后端并启用本包**，不用手工改任何配置：
