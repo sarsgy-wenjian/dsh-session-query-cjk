@@ -1,0 +1,63 @@
+{
+  "name": "dsh-session-query-cjk",
+  "version": "0.3.1",
+  "description": "让 DeepSeek Harness 的中文会话搜索真正可用：汉字级 FTS5 索引（1 个字起就能搜）+ 口语别名扩展 + 拼音模糊匹配。可直接替代官方 dsh-session-query-sqlite 后端。",
+  "keywords": [
+    "deepseek-harness",
+    "dsh",
+    "cordis",
+    "session-query",
+    "cjk",
+    "chinese",
+    "chinese-search",
+    "fts5",
+    "sqlite",
+    "pinyin",
+    "fuzzy-search"
+  ],
+  "type": "module",
+  "main": "lib/index.js",
+  "exports": {
+    ".": "./lib/index.js",
+    "./package.json": "./package.json"
+  },
+  "files": [
+    "lib/index.js",
+    "lib/pinyin-data.json",
+    "docs/设计思路.md",
+    "docs/验收-零配置与搜索入口-20261115.md",
+    "docs/upstream/README.upstream.md",
+    "CHANGELOG.md",
+    "README.md",
+    "LICENSE"
+  ],
+  "engines": {
+    "node": ">=20"
+  },
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/sarsgy-wenjian/dsh-session-query-cjk.git"
+  },
+  "homepage": "https://github.com/sarsgy-wenjian/dsh-session-query-cjk#readme",
+  "bugs": {
+    "url": "https://github.com/sarsgy-wenjian/dsh-session-query-cjk/issues"
+  },
+  "publishConfig": {
+    "access": "public"
+  },
+  "peerDependencies": {
+    "@deepseek-ai/dsh-session": "0.2.2-rc.3",
+    "@deepseek-ai/dsh-session-persistence": "0.2.2-rc.3",
+    "@deepseek-ai/dsh-session-query": "0.2.2-rc.3",
+    "@deepseek-ai/cordis": "~4.1.0"
+  },
+  "peerDependenciesMeta": {
+    "@deepseek-ai/dsh-session-persistence": {
+      "optional": true
+    }
+  },
+  "dependencies": {
+    "@deepseek-ai/schemastery": "~3.19.0"
+  }
+}
