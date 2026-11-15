@@ -1,0 +1,17 @@
+# 依赖与本机产物
+node_modules/
+pnpm-lock.yaml
+
+# 本机备份 / 临时输出
+*.bak
+*.orig
+*.log
+_tmp/
+proof/
+out/
+
+# 编辑器与系统
+.vscode/
+.idea/
+.DS_Store
+Thumbs.db
