@@ -1,6 +1,6 @@
 {
   "name": "dsh-session-query-cjk",
-  "version": "0.3.1",
+  "version": "0.3.2",
   "description": "让 DeepSeek Harness 的中文会话搜索真正可用：汉字级 FTS5 索引（1 个字起就能搜）+ 口语别名扩展 + 拼音模糊匹配。可直接替代官方 dsh-session-query-sqlite 后端。",
   "keywords": [
     "deepseek-harness",
@@ -19,11 +19,19 @@
   "main": "lib/index.js",
   "exports": {
     ".": "./lib/index.js",
+    "./cordis.patch.yml": "./cordis.patch.yml",
+    "./locale/*.json": "./locale/*.json",
+    "./icon": "./icon.svg",
     "./package.json": "./package.json"
   },
+  "icon": "./icon.svg",
   "files": [
     "lib/index.js",
     "lib/pinyin-data.json",
+    "cordis.patch.yml",
+    "icon.svg",
+    "locale/*.json",
+    "docs/DETAIL.md",
     "docs/设计思路.md",
     "docs/验收-零配置与搜索入口-20261115.md",
     "docs/upstream/README.upstream.md",
@@ -42,6 +50,11 @@
   "homepage": "https://github.com/sarsgy-wenjian/dsh-session-query-cjk#readme",
   "bugs": {
     "url": "https://github.com/sarsgy-wenjian/dsh-session-query-cjk/issues"
+  },
+  "dsh": {
+    "bundle": {
+      "patch": "./cordis.patch.yml"
+    }
   },
   "publishConfig": {
     "access": "public"

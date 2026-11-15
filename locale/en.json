@@ -1,6 +1,7 @@
 {
   "meta": {
     "title": "CJK session search",
-    "description": "Character-level full-text session search for Chinese: single-character queries, spoken-alias expansion, and pinyin fuzzy matching. Drop-in replacement for dsh-session-query-sqlite."
+    "description": "Character-level full-text session search for Chinese: single-character queries, spoken-alias expansion, and pinyin fuzzy matching. Drop-in replacement for dsh-session-query-sqlite.",
+    "detail": "docs/DETAIL.md"
   }
 }

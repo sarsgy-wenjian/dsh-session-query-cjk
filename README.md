@@ -38,9 +38,20 @@
 
 ## 安装
 
-### 1. 放进 profile
+### 方式 A：一键安装（推荐）
 
-DeepSeek Harness 的插件装在 profile 目录下：
+本包声明了 `dsh.bundle`，装为 bundle 即可，**补丁会自动禁掉官方后端并启用本包**，不用手工改任何配置：
+
+```
+plugin_manager install_bundle
+  target: git+https://github.com/sarsgy-wenjian/dsh-session-query-cjk   ← 或 dsh-session-query-cjk（已发 npm 时）
+```
+
+装完重启一次，首次搜索时自动建库。
+
+### 方式 B：手工安装（没有 git、或想自己控制配置时）
+
+**1. 放进 profile**
 
 ```
 %USERPROFILE%\.dsh\profiles\<profile名>\node_modules\dsh-session-query-cjk\
@@ -48,11 +59,9 @@ DeepSeek Harness 的插件装在 profile 目录下：
 
 把整个包目录放进去，确认 `lib/index.js` 和 `lib/pinyin-data.json` 都在。
 
-也可以在该 profile 目录里 `npm install <本包路径>`。
+**2. 改 profile 的 `cordis.patch.yml`**
 
-### 2. 改 cordis.patch.yml
-
-在 profile 目录的 `cordis.patch.yml` 里追加两项：**禁用官方后端**，**插入本包**。
+在 profile 目录的 `cordis.patch.yml` 里追加两项：**禁用官方后端**，**插入本包**（内容与本包的 `cordis.patch.yml` 相同）。
 
 ```yaml
 - id: session-query-sqlite

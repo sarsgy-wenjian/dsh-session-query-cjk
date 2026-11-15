@@ -1,0 +1,10 @@
+# 本包作为 bundle 安装时自动应用的补丁：
+# 官方 SQLite 后端与我们是同一个服务名（sessionQuery），必须禁掉官方那个，
+# 再插入本包。不写这份补丁也能用，但要用户手工改 profile 的 cordis.patch.yml。
+- id: session-query-sqlite
+  name: '@deepseek-ai/dsh-session-query-sqlite'
+  disabled: true
+
+- insert:
+    - id: session-query-cjk
+      name: dsh-session-query-cjk

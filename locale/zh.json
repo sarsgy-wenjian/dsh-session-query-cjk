@@ -1,6 +1,7 @@
 {
   "meta": {
     "title": "中文会话检索（CJK）",
-    "description": "汉字级全文检索：1 个字起就能搜，支持口语别名扩展与拼音模糊匹配；可直接替代官方 dsh-session-query-sqlite 后端。"
+    "description": "汉字级全文检索：1 个字起就能搜，支持口语别名扩展与拼音模糊匹配；可直接替代官方 dsh-session-query-sqlite 后端。",
+    "detail": "docs/DETAIL.md"
   }
 }

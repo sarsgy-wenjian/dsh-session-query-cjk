@@ -2,6 +2,21 @@
 
 本包版本号跟随 `package.json`。破坏性变更会单独标注。
 
+## 0.3.2 — 2026-11-15
+
+**新增：可作为 DeepSeek Harness bundle 一键安装**
+
+- 新增 `cordis.patch.yml`：装为 bundle 时**自动禁用官方 `@deepseek-ai/dsh-session-query-sqlite` 并插入本包**，用户不必再手工改 profile 的 `cordis.patch.yml`。
+- `package.json` 增 `dsh.bundle.patch`，并补 `./cordis.patch.yml`、`./locale/*.json`、`./icon` 导出与顶层 `icon` 字段——此前没有这些声明，插件管理器会以 `not-a-bundle` 拒绝安装。
+- 新增 `icon.svg`（原创）与 `docs/DETAIL.md`（插件详情页），locale 增 `meta.detail`。
+
+**修复**
+
+- `files` 之前**漏了 `locale/*.json`**：打包会丢掉标题与描述元数据，插件列表里只剩包名。
+- 删除 `de/es/fr/ja/pt/ru` 六个 locale：原内容是上游「查询会话记录 + SQLite 全文搜索」的机器翻译，与本包能力不符；改由 `en` 兜底。
+
+**升级提示**：已手工安装的用户覆盖 `lib/index.js` 即可，配置与索引库都不用动；想换成一键安装，先移除手工插的两条 patch 再 `install_bundle`。
+
 ## 0.3.1 — 2026-11-15
 
 **修复（真 bug：不写配置时插件起不来）**
