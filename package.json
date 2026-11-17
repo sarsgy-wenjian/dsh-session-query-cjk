@@ -1,6 +1,6 @@
 {
   "name": "dsh-session-query-cjk",
-  "version": "0.4.1",
+  "version": "0.5.0",
   "description": "让 DeepSeek Harness 的中文会话搜索真正可用：汉字级 FTS5 索引（1 个字起就能搜）+ 口语别名扩展 + 拼音模糊匹配。可直接替代官方 dsh-session-query-sqlite 后端。",
   "keywords": [
     "deepseek-harness",

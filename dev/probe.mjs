@@ -6,10 +6,13 @@
 // box and the agent tools call: ctx.sessionQuery.searchSessions(...).
 //
 // usage: node probe.mjs fresh   [--home DIR]
-//        node probe.mjs search  --db SRC [--query Q] [--home DIR]
+//        node probe.mjs search  --db SRC [--query Q] [--home DIR] [--vocab SRC]
 //
 // --home redirects USERPROFILE/HOME before the plugin resolves its default
 // database path, so the probe can prove the "no path configured" fallback.
+// --vocab stages a pinyin vocabulary file at the default vocab path
+// (~/.dsh/cache/session-query-vocab.json), so zero-config pinyin expansion
+// can be exercised against a corpus it was built from.
 import { Context } from '@deepseek-ai/cordis'
 import Engine from 'dsh-session-query-cjk'
 import { DatabaseSync } from 'node:sqlite'
@@ -30,8 +33,10 @@ if (fakeHome !== undefined) {
   process.env.HOME = fakeHome
 }
 const sourceDb = flag('db')
+const sourceVocab = flag('vocab')
 const query = flag('query', '林家')
 const defaultDb = join(homedir(), '.dsh', 'cache', 'session-query-cjk.db')
+const defaultVocab = join(homedir(), '.dsh', 'cache', 'session-query-vocab.json')
 
 const evidence = {
   mode,
@@ -39,6 +44,12 @@ const evidence = {
   defaultDb,
   dbExistedBefore: existsSync(defaultDb),
   configGiven: 'none',
+}
+
+if (sourceVocab !== undefined) {
+  mkdirSync(dirname(defaultVocab), { recursive: true })
+  copyFileSync(sourceVocab, defaultVocab)
+  evidence.vocabStagedBytes = statSync(defaultVocab).size
 }
 
 // The only hard service dependency of the engine (`static inject = ['sessions']`).

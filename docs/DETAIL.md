@@ -34,11 +34,12 @@ plugin_manager install_bundle → dsh-session-query-cjk
 | `openAt` | `first-search` | 建库时机：`startup`／`first-search`／`never` |
 | `aliasFile` | `~/.dsh/cache/session-query-aliases.json` | 别名表，可省略 |
 | `pinyinFile` | 包内自带拼音表 | 拼音表路径 |
+| `vocabFile` | `~/.dsh/cache/session-query-vocab.json` | 语料拼音词表，可省略（`dev/build-vocab.mjs` 生成） |
 
 ## 已知限制
 
 - **搜索入口由宿主决定**：DeepSeek Harness 0.2.2-rc.3 在侧边栏「会话／工作区」标题行右端有放大镜按钮（侧边栏展开时渲染），快捷键 Ctrl+K；界面最多合并显示 20 条（客户端的可见性过滤＋上限），要完整结果请用 Agent 侧工具或直接查索引库。
-- 拼音层只在**别名表内部**做同音归一，不是全库拼音索引。
+- 拼音层只在**别名表与语料词表**内做同音归一，不是全库拼音索引。
 - 多音字只取 Unicode Unihan 主读音。
 - 索引是检索时对齐的快照，不常驻监听会话写入。
 
